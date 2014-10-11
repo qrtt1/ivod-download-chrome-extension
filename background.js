@@ -8,7 +8,7 @@ chrome.runtime.onMessage.addListener(function(message, sender, sendResponse){
     chrome.notifications.create(getNotificationId(), 
         {
             title: '排程下載',
-            iconUrl: 'notify.gif',
+            iconUrl: 'notify.png',
             type: 'basic',
             message: message
         }, 
