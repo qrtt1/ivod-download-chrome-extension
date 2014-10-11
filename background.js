@@ -4,7 +4,8 @@ function getNotificationId() {
 }
 
 
-chrome.runtime.onMessage.addListener(function(message, sender, sendResponse){
+function sendNotification(message)
+{
     chrome.notifications.create(getNotificationId(), 
         {
             title: '排程下載',
@@ -14,5 +15,19 @@ chrome.runtime.onMessage.addListener(function(message, sender, sendResponse){
         }, 
         function(notificationId){}
     );
+}
+
+function urlRequest(url) {
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function (state, status) {
+        console.log("s:"+state+","+status)
+    };
+    xhr.open("GET", 'http://127.0.0.1:8000'+url, true);
+    xhr.send();
+}
+
+chrome.runtime.onMessage.addListener(function(message, sender, sendResponse){
+    urlRequest(message);
+    sendNotification(message);
 });
 
