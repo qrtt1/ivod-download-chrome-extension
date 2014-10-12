@@ -17,10 +17,10 @@ function sendNotification(message)
     );
 }
 
-var hostAppId = 'twly-ivod-dl-chrome-extension-receiver';
+var hostAppId = 'twly_receiver';
 
 chrome.runtime.onMessage.addListener(function(message, sender, sendResponse){
-    chrome.runtime.sendNativeMessage(hostAppId, {uri:message});
+    chrome.runtime.sendNativeMessage(hostAppId, {uri:message}, function(m){console.log(m);});
     sendNotification(message);
     console.log(chrome.runtime.lastError)
 });

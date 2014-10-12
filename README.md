@@ -13,11 +13,11 @@
 ## 向 chrome 註冊外部程式
 
 我們使用 [Native Messaging](https://developer.chrome.com/extensions/messaging#native-messaging) API 讓 chrome extension 呼叫外部程式。
-因此需先手動向 Chrome 註冊讓它知道外部程式的資訊，您需將專案內的 `twly-ivod-dl-chrome-extension-receiver.json` 檔放在適當的路徑並稍為修改才能正常運作。
+因此需先手動向 Chrome 註冊讓它知道外部程式的資訊，您需將專案內的 `twly_receiver.json` 檔放在適當的路徑並稍為修改才能正常運作。
 
 ```json
 {
-  "name": "twly-ivod-dl-chrome-extension-receiver",
+  "name": "twly_receiver",
   "description": "twly single video download jobs receiver",
   "path": "HOST_PATH",
   "type": "stdio",
@@ -35,7 +35,7 @@ HOST_PATH 為執行 [ivod-download-client](https://github.com/billy3321/ivod-dow
 
 ```json
 {
-  "name": "twly-ivod-dl-chrome-extension-receiver",
+  "name": "twly_receiver",
   "description": "twly single video download jobs receiver",
   "path": "/usr/local/bin/twly-ivod-dl-chrome-extension-receiver",
   "type": "stdio",
@@ -50,19 +50,19 @@ HOST_PATH 為執行 [ivod-download-client](https://github.com/billy3321/ivod-dow
 以 OS X 為例，它可以放在使用者目錄下：
 
 ```
-~/Library/Application Support/Google/Chrome/NativeMessagingHosts/twly-ivod-dl-chrome-extension-receiver.json
+~/Library/Application Support/Google/Chrome/NativeMessagingHosts/twly_receiver.json
 ```
 
 以 Linux 為例，它可以放在使用者目錄下：
 
 ```
-~/.config/google-chrome/NativeMessagingHosts/twly-ivod-dl-chrome-extension-receiver.json
+~/.config/google-chrome/NativeMessagingHosts/twly_receiver.json
 ```
 
 若是 Windows 使用者，它需修改系統註冊檔，增加下列的 key
 
 ```
-HKEY_CURRENT_USER\SOFTWARE\Google\Chrome\NativeMessagingHosts\twly-ivod-dl-chrome-extension-receiver
+HKEY_CURRENT_USER\SOFTWARE\Google\Chrome\NativeMessagingHosts\twly_receiver
 ```
 
 
