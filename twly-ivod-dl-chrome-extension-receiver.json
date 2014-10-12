@@ -1,0 +1,9 @@
+{
+  "name": "twly-ivod-dl-chrome-extension-receiver",
+  "description": "twly single video download jobs receiver",
+  "path": "HOST_PATH",
+  "type": "stdio",
+  "allowed_origins": [
+    "chrome-extension://EXTENSION_ID/"
+  ]
+}

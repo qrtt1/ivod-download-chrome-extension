@@ -2,8 +2,8 @@
   "manifest_version": 2,
 
   "name": "立法院 ivod 下載",
-  "description": "提供立法院 ivod 下載钮，需搭配背景程式使用。",
-  "version": "1.0",
+  "description": "提供立法院 ivod 下載钮，需搭外部程式使用。",
+  "version": "1.2",
   "content_scripts": [{
     "matches": ["http://ivod.ly.gov.tw/*"],
     "js": ["jquery-2.1.1.min.js", "download.js"],
@@ -13,8 +13,5 @@
     "scripts": ["background.js"],
     "persistence": false
   },
-  "permissions": ["notifications", "background", "http://127.0.0.1:8000/*"],
-  "web_accessible_resources": [
-    "48.png"
-  ]
+  "permissions": ["notifications", "background", "nativeMessaging"]
 }

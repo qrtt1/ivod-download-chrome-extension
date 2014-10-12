@@ -17,17 +17,11 @@ function sendNotification(message)
     );
 }
 
-function urlRequest(url) {
-    var xhr = new XMLHttpRequest();
-    xhr.onreadystatechange = function (state, status) {
-        console.log("s:"+state+","+status)
-    };
-    xhr.open("GET", 'http://127.0.0.1:8000'+url, true);
-    xhr.send();
-}
+var hostAppId = 'twly-ivod-dl-chrome-extension-receiver';
 
 chrome.runtime.onMessage.addListener(function(message, sender, sendResponse){
-    urlRequest(message);
+    chrome.runtime.sendNativeMessage(hostAppId, {uri:message});
     sendNotification(message);
+    console.log(chrome.runtime.lastError)
 });
 
