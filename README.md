@@ -4,7 +4,7 @@
 ## 安裝
 
 1. 安裝 [ivod-download-client](https://github.com/billy3321/ivod-download-client)
-1. 安裝 chrome extension 與註冊外部程式
+1. 安裝 chrome extension 與註冊外部程式 [Windows 版安裝說明](INSTALL_WIN32.md)
 1. 開啟 [立法院 議事轉播 網際網路多媒體隨選視訊(ivod)系統](http://ivod.ly.gov.tw/)，進入到想下載的頁面，點選「排程下載」：
 
 
