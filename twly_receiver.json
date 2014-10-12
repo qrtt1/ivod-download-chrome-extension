@@ -1,5 +1,5 @@
 {
-  "name": "twly-ivod-dl-chrome-extension-receiver",
+  "name": "twly_receiver",
   "description": "twly single video download jobs receiver",
   "path": "HOST_PATH",
   "type": "stdio",

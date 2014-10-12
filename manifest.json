@@ -1,9 +1,9 @@
 {
   "manifest_version": 2,
 
-  "name": "立法院 ivod 下載",
+  "name": "立法院 ivod 下載小幫手",
   "description": "提供立法院 ivod 下載钮，需搭外部程式使用。",
-  "version": "1.2",
+  "version": "0.0.1",
   "content_scripts": [{
     "matches": ["http://ivod.ly.gov.tw/*"],
     "js": ["jquery-2.1.1.min.js", "download.js"],
