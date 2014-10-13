@@ -17,11 +17,45 @@ function sendNotification(message)
     );
 }
 
-var hostAppId = 'twly_receiver';
+var port = null;
+var hostName = 'twly_receiver';
+
+
+function onNativeMessage(message) {
+    console.log(message);
+}
+
+function onDisconnected() {
+    port = null;
+    console.log("Failed to connect: " + chrome.runtime.lastError.message);
+}
+
+function connectNative() {
+    port = chrome.runtime.connectNative(hostName);
+    port.onMessage.addListener(onNativeMessage);
+    port.onDisconnect.addListener(onDisconnected);
+}
 
 chrome.runtime.onMessage.addListener(function(message, sender, sendResponse){
-    chrome.runtime.sendNativeMessage(hostAppId, {uri:message}, function(m){console.log(m);});
-    sendNotification(message);
-    console.log(chrome.runtime.lastError)
+    var uri = message.uri
+    var speaker = message.speaker.trim()
+
+    var video_info = "";
+    var text_lines = speaker.split("\n");
+    for (var i in text_lines) {
+        video_info += ("\n"+text_lines[i].trim());
+    }
+    
+    sendNotification("影片：" + uri + "\n" + video_info);
+
+    if (port != null){
+        port.postMessage({uri:uri});
+    }
+    else{
+        console.log("no port to post messages");
+    }
 });
+
+
+connectNative();
 

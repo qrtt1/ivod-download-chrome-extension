@@ -1,5 +1,5 @@
 
-function createDownloadButton(uri) {
+function createDownloadButton(uri, speaker) {
     var ivodHandler = $("<a></a>")
         .addClass('ivod-dl-helper-handled')
         .attr('href', '#')
@@ -7,7 +7,7 @@ function createDownloadButton(uri) {
         .text("排程下載")
         .click(function(event){
             event.preventDefault();
-            chrome.runtime.sendMessage(uri);
+            chrome.runtime.sendMessage({uri:uri, speaker:speaker});
         })
         ;
     return ivodHandler
@@ -29,8 +29,12 @@ function buildScheduleLink(linkElement) {
     var link = $(linkElement);
     var href = link.attr('href');
     link.addClass('ivod-dl-helper-handled');
+
+    var speaker = link.parent().parent().parent().parent().parent().children().first().text();
+    var introducion = link.parent().parent().parent().parent().text();
+
     link.parent().parent()
-        .before($(createDownloadButton(href)));
+        .before($(createDownloadButton(href, speaker)));
 }
 
 function attachDownloadHelper(elem) {
